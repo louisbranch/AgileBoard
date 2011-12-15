@@ -1,0 +1,22 @@
+%h2= @project.name
+=link_to 'New User Story', new_project_user_story_path(@project)
+
+%div#board
+  %section#backlog
+    %h3 Backlog
+    =render 'user_stories/user_stories', :user_stories => @backlog
+  %section#todo
+    %h3 To Do
+    =render 'user_stories/user_stories', :user_stories => @todo
+  %section#doing
+    %h3 Doing
+    =render 'user_stories/user_stories', :user_stories => @doing
+  %section#validating
+    %h3 Validating
+    =render 'user_stories/user_stories', :user_stories => @validating
+  %section#done
+    %h3 Done
+    =render 'user_stories/user_stories', :user_stories => @done
+  %section#archived
+    %h3 Archived
+    =render 'user_stories/user_stories', :user_stories => @archived

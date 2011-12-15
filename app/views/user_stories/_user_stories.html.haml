@@ -1,0 +1,9 @@
+%ul
+  - user_stories.each do |user_story|
+    %li{:id => ['user_story', user_story.id], 'data-update-url' => change_status_project_user_story_path(@project, user_story) }
+      %header
+        = user_story.name
+      %div.details
+        = simple_format(user_story.description)
+      %footer
+        = link_to 'Edit', edit_project_user_story_path(@project, user_story)
