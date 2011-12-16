@@ -1,7 +1,10 @@
+$section_height: 600px
 div#board
   position: relative
+  overflow: auto
+  border-top: 2px solid #ccc
+  border-bottom: 2px solid #ccc
   section
-    height: 600px
     overflow: hidden
     width: (100%/6)
     float: left
@@ -9,22 +12,36 @@ div#board
     box-sizing: border-box
     background-color: #fff
     padding: 10px
+    &#backlog, &#archived
+      h3
+        cursor: pointer
+    &#archived h3
+      text-align: right
     &.active
       background-color: #FCF7D9
     &.expanded
       width: (96%/4)
-    &.hidden
+    &.handler
+      display: none
+      min-height: $section_height
       width: 2%
       background: #f2f2f2
       cursor: pointer
       &:hover
         background: #e2e2e2
       h3
+        margin-top: ($section_height/3)
         word-wrap: break-word
+        text-transform: uppercase
+        margin-left: -2px
+        font-size: 80%
+        color: #666
+        span
+          display: none
       ul li
         display: none
     ul
-      height: inherit
+      min-height: $section_height
       li
         background-color: #E3EBC6
         border: 1px solid #C2D288

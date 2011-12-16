@@ -6,12 +6,7 @@ class ProjectsController < ApplicationController
   
   def show
     @project = Project.find(params[:id])
-    @backlog = @project.user_stories.backlog
-    @todo = @project.user_stories.todo
-    @doing = @project.user_stories.doing
-    @validating = @project.user_stories.validating
-    @done = @project.user_stories.done
-    @archived = @project.user_stories.archived
+    @user_stories = @project.user_stories
   end
   
   def new
@@ -22,7 +17,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(params[:project])
     if @project.save
       flash[:notice] = 'Project Created!'
-      redirect_to projects_path
+      redirect_to project_path(@project)
     end
   end
 

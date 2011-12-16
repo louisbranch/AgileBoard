@@ -8,8 +8,10 @@ class UserStoriesController < ApplicationController
   def create
     @user_story = @project.user_stories.build(params[:user_story])
     if @user_story.save
-      flash[:notice] = 'User Story Created!'
-      redirect_to project_path(@project)
+      respond_to do |format|
+        format.html { redirect_to project_path(@project), :notice => 'User Story Created!'}
+        format.js { @user_story }
+      end
     end
   end
   
@@ -20,16 +22,11 @@ class UserStoriesController < ApplicationController
   def update
     @user_story = UserStory.find(params[:id])
     if @user_story.update_attributes(params[:user_story])
-      flash[:notice] = 'User Story Updated!'
-      redirect_to project_path(@project)
+      respond_to do |format|
+        format.html { redirect_to project_path(@project), :notice => 'User Story Updated!'}
+        format.js { @user_story }
+      end
     end
-  end
-  
-  def change_status
-    @user_story = UserStory.find(params[:id])
-    if @user_story.update_attributes(params[:user_story])
-    end
-    render nothing: true
   end
   
   private

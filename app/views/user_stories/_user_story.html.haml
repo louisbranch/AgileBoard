@@ -1,0 +1,7 @@
+%li{:id => ['user_story', user_story.id]}
+  %header
+    = user_story.name
+  %div.details
+    = simple_format(user_story.description)
+  %footer
+    = link_to 'Edit', edit_project_user_story_path(@project, user_story), :remote => true

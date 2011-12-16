@@ -28,7 +28,7 @@ When /^I update this user story status to "([^"]*)"$/ do |status|
   click_on 'Update User story'
 end
 
-Then /^I should see this new user story listed on the project page$/ do
+Then /^I should see this new user story listed$/ do
   @project.user_stories.count.should == 1
   current_path.should == project_path(@project)
   page.should have_content 'User Story Created!'
@@ -44,7 +44,7 @@ Then /^this user story should appear in the correct section$/ do
   end
 end
 
-Then /^I should see this user story updated on the project page$/ do
+Then /^I should see this user story updated$/ do
   current_path.should == project_path(Project.first)
   page.should have_content 'User Story Updated!'
   within("li#user_story_1") do

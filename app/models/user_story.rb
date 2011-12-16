@@ -14,12 +14,17 @@ class UserStory < ActiveRecord::Base
   
   def statuses
     [
-      ['Backlog',    0],
-      ['To Do',      1],
-      ['Doing',      2],
-      ['Validating', 3],
-      ['Done',       4],
-      ['Archived',   5]
+      'Backlog',
+      'To Do',
+      'Doing',
+      'Validating',
+      'Done',
+      'Archived',
     ]
-  end  
+  end
+  
+  def status_name
+    statuses[status].gsub(' ','').downcase
+  end
+  
 end

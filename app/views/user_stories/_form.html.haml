@@ -1,8 +1,8 @@
-=form_for([@project,@user_story]) do |f|
+=form_for([@project,@user_story], :remote => true) do |f|
   =f.label :name, 'Name'
   =f.text_field :name
   =f.label :description, 'Description'
   =f.text_area :description
   =f.label :status, 'Status'
-  =f.select :status, @user_story.statuses
+  =f.select :status, options_for_select(@user_story.statuses.collect {|v,i| [v,@user_story.statuses.index(v)]}, :selected => f.object.status)
   =f.submit

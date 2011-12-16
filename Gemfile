@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem 'execjs'
 gem 'haml'
 gem 'haml-rails'
+gem 'coffeebeans'
 gem 'therubyracer'
 gem 'bluecloth'
 

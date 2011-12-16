@@ -6,4 +6,4 @@ Feature: Updating an User Story
 	Scenario: Updating a story
 		Given an user story exists
 		When I update this user story
-		Then I should see this user story updated on the project page
+		Then I should see this user story updated

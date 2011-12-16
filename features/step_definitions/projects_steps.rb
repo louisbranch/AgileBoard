@@ -15,7 +15,7 @@ end
 
 Then /^I should see this project listed$/ do
   Project.count.should == 1
-  current_path.should == projects_path
+  current_path.should == project_path(Project.first)
   page.should have_content 'Project Created!'
   page.should have_content 'Agile Board'
 end
