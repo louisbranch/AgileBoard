@@ -4,31 +4,9 @@
 %div#board
   %section.handler
     %h3 Backlog
-  %section#backlog
-    %h3 << Backlog
-    %ul
-      =render @user_stories.backlog
-  %section#todo
-    %h3 To Do
-    %ul
-      =render @user_stories.todo
-  %section#doing
-    %h3 Doing
-    %ul
-      =render @user_stories.doing
-  %section#validating
-    %h3 Validating
-    %ul
-      =render @user_stories.validating
-  %section#done
-    %h3 Done
-    %ul
-      =render @user_stories.done
-  %section.handler
-    %h3 Archived
-  %section#archived
-    %h3 Archived >>
-    %ul
-      =render @user_stories.archived
-
+  - @statuses.each do |status|
+    %section{ :id => status.identification }
+      %h3= status.name
+      %ul{ 'data-update-url' => update_status_project_user_stories_path(@project, :status => status.id)}
+        =render :partial => 'user_stories/user_story', :collection => status.user_stories
 %div#form

@@ -1,7 +1,7 @@
 module UserStoriesHelper
   
   def status_list
-    "section##{@user_story.status_name} ul"
+    "section##{@user_story.status.identification} ul"
   end
   
   def user_story_item

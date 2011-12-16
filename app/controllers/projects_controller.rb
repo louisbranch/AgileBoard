@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   
   def show
     @project = Project.find(params[:id])
-    @user_stories = @project.user_stories
+    @statuses = Status.all
   end
   
   def new

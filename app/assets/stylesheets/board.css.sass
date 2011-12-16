@@ -1,26 +1,26 @@
 $section_height: 600px
 div#board
   position: relative
-  overflow: auto
+  overflow: hidden
   border-top: 2px solid #ccc
   border-bottom: 2px solid #ccc
   section
     overflow: hidden
-    width: (100%/6)
+    width: (100%/5)
     float: left
     border-right: 1px dashed #ccc
     box-sizing: border-box
     background-color: #fff
     padding: 10px
-    &#backlog, &#archived
+    &#backlog
       h3
         cursor: pointer
-    &#archived h3
-      text-align: right
+    &#done
+      border-right: none
     &.active
       background-color: #FCF7D9
     &.expanded
-      width: (96%/4)
+      width: (98%/4)
     &.handler
       display: none
       min-height: $section_height
@@ -60,7 +60,7 @@ div#board
         div.details
           padding: 5px
         footer
-          margin-top: 10px
+          margin-top: 5px
           border-top: 1px solid #C2D288
           padding: 2px 5px
           font-size: 80%

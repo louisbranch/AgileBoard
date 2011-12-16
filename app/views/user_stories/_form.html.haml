@@ -3,6 +3,8 @@
   =f.text_field :name
   =f.label :description, 'Description'
   =f.text_area :description
-  =f.label :status, 'Status'
-  =f.select :status, options_for_select(@user_story.statuses.collect {|v,i| [v,@user_story.statuses.index(v)]}, :selected => f.object.status)
+  =f.label :status_id, 'Status'
+  =f.collection_select(:status_id, Status.all, :id, :name)
+  =f.label :story_point_id, 'Story Points'
+  =f.collection_select(:story_point_id, StoryPoint.all, :id, :value, :include_blank => '?' )
   =f.submit

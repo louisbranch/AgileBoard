@@ -5,5 +5,6 @@ Feature: Creating an User Story
 	
 	Scenario: Adding a story to a project
 		Given a project exists
+		And a status exists
 		When I create a new user story
-		Then I should see this new user story listed
+		Then I should see this new user story listed on the status section

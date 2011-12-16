@@ -1,6 +1,8 @@
 %li{:id => ['user_story', user_story.id]}
   %header
     = user_story.name
+    - if user_story.story_point
+      %span.story_points= user_story.story_point.value
   %div.details
     = simple_format(user_story.description)
   %footer

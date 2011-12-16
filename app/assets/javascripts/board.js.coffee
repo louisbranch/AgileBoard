@@ -11,7 +11,7 @@ $ sortUserStories = ->
       out: ->
         $(this).parent().removeClass('active')
       update: ->
-        #$.post($(this).data('update-url'))
+        $.post($(this).data('update-url'), $(this).sortable('serialize'))
 
 $ hideSecundarySections = ->
   if $('div#board').length

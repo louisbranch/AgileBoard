@@ -7,5 +7,7 @@ FactoryGirl.define do
     I want to create an User Story
     """
     association :project
+    association :status
+    association :story_point
   end
 end

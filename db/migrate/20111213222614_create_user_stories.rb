@@ -3,8 +3,11 @@ class CreateUserStories < ActiveRecord::Migration
     create_table :user_stories do |t|
       t.string :name
       t.text :description
-      t.integer :status, :default => 0
       t.references :project
+      t.references :iteration
+      t.references :status
+      t.references :story_point
+      t.references :priority
       t.timestamps
     end
   end

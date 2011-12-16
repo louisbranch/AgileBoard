@@ -2,7 +2,7 @@ AgileBoard::Application.routes.draw do
   
   resources :projects do
     resources :user_stories do
-      post 'statuses', :on => :collection
+      post 'update_status', :on => :collection
     end
   end
   
