@@ -1,11 +1,12 @@
 %h2= @project.name
-=link_to 'New User Story', new_project_user_story_path(@project), :remote => true, :id => 'new_user_story'
-=link_to 'New Release Plan', new_project_release_plan_path(@project)
-%div#project_backlog
+%section#backlog
+  %h3 Project Backlog
+  =link_to 'New User Story', new_project_user_story_path(@project), :remote => true, :id => 'new_user_story'
   %ul
     =render @user_stories
 %div#form
 %div#release_plans
+  %h3 Release Plans
+  =link_to 'New Release Plan', new_project_release_plan_path(@project)
   %ul
-    - @release_plans.each do |release_plan|
-      =render @release_plans
+    =render @release_plans

@@ -1,23 +1,25 @@
 Given /^an user story exists$/ do
-  @user_story = Factory(:user_story, :release_plan => nil, :iteration => nil)
+  @user_story = Factory(:user_story)
 end
 
 Given /^an user story and a release plan exist in the same project$/ do
   @project = Factory(:project)
   @release_plan = Factory(:release_plan, :project => @project)
-  @user_story = Factory(:user_story, :project => @project, :release_plan => @release_plan)
+  @user_story = Factory(:user_story_with_story_point, :project => @project)
 end
 
 Given /^an user story, a release plan and an iteration exist in the same project$/ do
   @project = Factory(:project)
   @release_plan = Factory(:release_plan, :project => @project)
   @iteration = Factory(:iteration, :release_plan => @release_plan)
-  @user_story = Factory(:user_story, :project => @project, :release_plan => @release_plan)
+  @user_story = Factory(:user_story_with_release_plan, :project => @project, :release_plan => @release_plan)
 end
 
 Given /^an user story is assign to an iteration$/ do
-  @iteration = Factory(:iteration)
-  @user_story = Factory(:user_story, :iteration => @iteration)
+  @project = Factory(:project)
+  @release_plan = Factory(:release_plan, :project => @project)
+  @iteration = Factory(:iteration, :release_plan => @release_plan)
+  @user_story = Factory(:user_story_with_iteration, :project => @project, :release_plan => @release_plan, :iteration => @iteration)
 end
 
 When /^I create a new user story$/ do
@@ -83,6 +85,7 @@ Then /^I should see this user story updated$/ do
 end
   
 Then /^this user story should diplay its story points$/ do
+  current_path.should == project_path(Project.first)
   within("li#user_story_1") do
     page.should have_content StoryPoint.first.value
   end
@@ -100,7 +103,7 @@ Then /^I should see this user story listed on the iteration backlog$/ do
 end
 
 Then /^I should see this user story listed on the correct status section$/ do
-  visit project_release_plan_iteration_path(Project.first, ReleasePlan.first, Iteration.first)
+  visit project_release_plan_iteration_path(@iteration.project, @iteration.release_plan, @iteration)
   within("section##{Status.first.identification}") do
     within("li#user_story_1") do
       page.should have_content UserStory.first.name

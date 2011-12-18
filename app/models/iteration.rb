@@ -6,4 +6,9 @@ class Iteration < ActiveRecord::Base
     index = release_plan.iterations.index(self)
     "#{(index + 1).ordinalize} Iteration"
   end
+  
+  def project
+    release_plan.project
+  end
+  
 end

@@ -4,6 +4,8 @@ class ReleasePlan < ActiveRecord::Base
   has_many :iterations
   has_many :user_stories
   
+  validates :name, :presence => true
+  
   def starts
     if start_date
       start_date.strftime("%b %d, %Y")

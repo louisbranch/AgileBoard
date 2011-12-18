@@ -1,1 +1,1 @@
-Simple agile board to track User Stories and Iterations
+Simple agile board to track Projects, Release Plans, Iterations and User Stories

@@ -1,4 +1,6 @@
 =form_for([@project,@release_plan,@iteration]) do |f|
-  =f.label :length, 'Length'
-  =f.select :length, (1..4)
-  =f.submit
+  %div
+    =f.label :length, 'Length'
+    =f.select :length, (1..4)
+  %div
+    =f.submit

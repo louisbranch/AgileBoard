@@ -1,12 +1,18 @@
 =form_for ([@project, @release_plan]) do |f|
-  =f.label :name, 'Name'
-  =f.text_field :name
-  =f.label :description, 'Description'
-  =f.text_area :description
-  =f.label :start_date, 'Start Date'
-  =f.text_field :start_date
-  =f.label :end_date, 'End Date'
-  =f.text_field :end_date
-  =f.label :iteration_length, 'Default Iteration Length (weeks)'
-  =f.select :iteration_length, (1..4), :include_blank => true
-  =f.submit
+  %div
+    =f.label :name, 'Name'
+    =f.text_field :name
+  %div
+    =f.label :description, 'Description'
+    =f.text_area :description
+  %div
+    =f.label :start_date, 'Start Date'
+    =f.text_field :start_date, :size => '10'
+  %div
+    =f.label :end_date, 'End Date'
+    =f.text_field :end_date, :size => '10'
+  %div
+    =f.label :iteration_length, 'Default Iteration Length (weeks)'
+    =f.select :iteration_length, (1..4), :include_blank => true
+  %div
+    =f.submit

@@ -16,6 +16,9 @@ class UserStoriesController < ApplicationController
         format.html { redirect_to @project, :notice => 'User Story Created!'}
         format.js { @user_story }
       end
+    else
+      show_errors(@user_story)
+      redirect_to @project
     end
   end
   
@@ -30,6 +33,9 @@ class UserStoriesController < ApplicationController
         format.html { redirect_to @project, :notice => 'User Story Updated!'}
         format.js { @user_story }
       end
+    else
+      show_errors(@user_story)
+      redirect_to @project
     end
   end
   
