@@ -1,9 +1,8 @@
 %li{:id => ['user_story', user_story.id]}
   %header
-    = user_story.name
-    - if user_story.story_point
-      %span.story_points= user_story.story_point.value
-  %div.details
-    = simple_format(user_story.description)
+    %h4= user_story.name
+    %span.story_points= user_story.points
+  %div.details= simple_format(user_story.description)
+  %div.priority= user_story.priority.name unless user_story.priority.nil?
   %footer
     = link_to 'Edit', edit_project_user_story_path(@project, user_story), :remote => true

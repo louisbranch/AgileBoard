@@ -11,7 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111216141354) do
+ActiveRecord::Schema.define(:version => 20111218022506) do
+
+  create_table "iterations", :force => true do |t|
+    t.integer  "length"
+    t.boolean  "finished"
+    t.integer  "release_plan_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "iterations", ["release_plan_id"], :name => "index_iterations_on_release_plan_id"
+
+  create_table "priorities", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "projects", :force => true do |t|
     t.string   "name"
@@ -19,6 +35,20 @@ ActiveRecord::Schema.define(:version => 20111216141354) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "release_plans", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "iteration_length"
+    t.boolean  "finished"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "release_plans", ["project_id"], :name => "index_release_plans_on_project_id"
 
   create_table "statuses", :force => true do |t|
     t.string   "name"
@@ -36,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20111216141354) do
     t.string   "name"
     t.text     "description"
     t.integer  "project_id"
+    t.integer  "release_plan_id"
     t.integer  "iteration_id"
     t.integer  "status_id"
     t.integer  "story_point_id"
@@ -43,5 +74,12 @@ ActiveRecord::Schema.define(:version => 20111216141354) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "user_stories", ["iteration_id"], :name => "index_user_stories_on_iteration_id"
+  add_index "user_stories", ["priority_id"], :name => "index_user_stories_on_priority_id"
+  add_index "user_stories", ["project_id"], :name => "index_user_stories_on_project_id"
+  add_index "user_stories", ["release_plan_id"], :name => "index_user_stories_on_release_plan_id"
+  add_index "user_stories", ["status_id"], :name => "index_user_stories_on_status_id"
+  add_index "user_stories", ["story_point_id"], :name => "index_user_stories_on_story_point_id"
 
 end

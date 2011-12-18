@@ -1,0 +1,14 @@
+%h3= @iteration.name
+%div#board
+  %section.handler
+    %h3 Backlog
+  %section#backlog
+    %h3 Backlog
+    %ul{ 'data-update-url' => update_status_project_user_stories_path(@project, :status => nil)}
+      =render @user_stories
+  - @statuses.each do |status|
+    %section{ :id => status.identification }
+      %h3= status.name
+      %ul{ 'data-update-url' => update_status_project_user_stories_path(@project, :status => status.id)}
+        =render :partial => 'user_stories/user_story', :collection => status.user_stories
+  

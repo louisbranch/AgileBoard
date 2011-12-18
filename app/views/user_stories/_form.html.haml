@@ -3,8 +3,14 @@
   =f.text_field :name
   =f.label :description, 'Description'
   =f.text_area :description
-  =f.label :status_id, 'Status'
-  =f.collection_select(:status_id, Status.all, :id, :name)
   =f.label :story_point_id, 'Story Points'
-  =f.collection_select(:story_point_id, StoryPoint.all, :id, :value, :include_blank => '?' )
+  =f.collection_select(:story_point_id, @story_points, :id, :value, :include_blank => '?' )
+  =f.label :release_plan_id, 'Release Plan'
+  =f.collection_select(:release_plan_id, @release_plans, :id, :name, :include_blank => 'none' )
+  =f.label :priority_id, 'Priority'
+  =f.collection_select(:priority_id, @priorities, :id, :name)
+  =f.label :iteration_id, 'Iteration'
+  =f.grouped_collection_select(:iteration_id, @release_plans, :iterations, :name, :id, :name, :include_blank => 'none' )
+  =f.label :status_id, 'Status'
+  =f.collection_select(:status_id, @statuses, :id, :name, :include_blank => 'none' )
   =f.submit

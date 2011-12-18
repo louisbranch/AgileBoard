@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :status do
-    name 'Backlog'
+    name 'To Do'
   end
 end

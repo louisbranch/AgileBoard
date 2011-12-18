@@ -1,8 +1,12 @@
 class UserStoriesController < ApplicationController
   before_filter :find_project
+  before_filter :form_instances, :only => [:new, :edit]
   
   def new
     @user_story = UserStory.new
+    @release_plans = ReleasePlan.all
+    @statuses = Status.all
+    @story_points = StoryPoint.all
   end
   
   def create
@@ -41,6 +45,13 @@ class UserStoriesController < ApplicationController
   
   def find_project
     @project = Project.find(params[:project_id])
+  end
+  
+  def form_instances
+    @release_plans = Project.find(params[:project_id]).release_plans
+    @statuses = Status.all
+    @story_points = StoryPoint.all
+    @priorities = Priority.all
   end
   
 end

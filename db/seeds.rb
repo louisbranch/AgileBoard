@@ -1,5 +1,5 @@
+# encoding: UTF-8
 Status.create([
-  { :name => 'Backlog' },
   { :name => 'To Do' },
   { :name => 'Doing' },
   { :name => 'Validating'},
@@ -7,7 +7,7 @@ Status.create([
   ])
   
 StoryPoint.create([
-  { :value => '0.5' },
+  { :value => '½' },
   { :value => '1' },
   { :value => '2'},
   { :value => '3'},
@@ -15,5 +15,12 @@ StoryPoint.create([
   { :value => '8'},
   { :value => '13'},
   { :value => '21'},
-  { :value => '34'},
+  { :value => '34'}
+  ])
+
+Priority.create([
+  { :name => 'Must Have' },
+  { :name => 'Should Have' },
+  { :name => 'Could Have' },
+  #{ :name => 'Won\'t Have this Time' },
   ])

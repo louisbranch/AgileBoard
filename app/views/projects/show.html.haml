@@ -1,12 +1,11 @@
 %h2= @project.name
 =link_to 'New User Story', new_project_user_story_path(@project), :remote => true, :id => 'new_user_story'
-
-%div#board
-  %section.handler
-    %h3 Backlog
-  - @statuses.each do |status|
-    %section{ :id => status.identification }
-      %h3= status.name
-      %ul{ 'data-update-url' => update_status_project_user_stories_path(@project, :status => status.id)}
-        =render :partial => 'user_stories/user_story', :collection => status.user_stories
+=link_to 'New Release Plan', new_project_release_plan_path(@project)
+%div#project_backlog
+  %ul
+    =render @user_stories
 %div#form
+%div#release_plans
+  %ul
+    - @release_plans.each do |release_plan|
+      =render @release_plans

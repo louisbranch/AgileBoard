@@ -16,14 +16,14 @@ $ sortUserStories = ->
 $ hideSecundarySections = ->
   if $('div#board').length
     $('section#todo, section#doing, section#validating, section#done').addClass('expanded')
-    $('section#backlog, section#archived').hide()
+    $('section#backlog').hide()
     $('section#.handler').show()
     $('section#.handler').click ->
       showSecundarySections()
 
 showSecundarySections = ->
   $('section#todo, section#doing, section#validating, section#done').removeClass('expanded')
-  $('section#backlog, section#archived').show()
+  $('section#backlog').show()
   $('section#.handler').hide()
-  $('section#backlog h3, section#archived h3').click ->
+  $('section#backlog h3').click ->
     hideSecundarySections()

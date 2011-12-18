@@ -1,0 +1,12 @@
+%li
+  = release_plan.name
+  %div= simple_format(release_plan.description)
+  %div
+    %strong Starts:
+    = release_plan.starts
+  %div
+    %strong Ends:
+    = release_plan.ends
+  %div
+    %strong Default Iteration Length:
+    = release_plan.length

@@ -15,6 +15,8 @@ div#board
     &#backlog
       h3
         cursor: pointer
+        &:before
+          content: '<< '
     &#done
       border-right: none
     &.active
@@ -56,7 +58,16 @@ div#board
           cursor: move
           background-color: #C2D288
           padding: 5px
-          font-weight: bold
+          overflow: hidden
+          h4
+            float: left
+          span.story_points
+            display: inline-block
+            float: right
+            padding: 0 4px
+            background-color: rgba(255, 255, 255, 0.15)
+            border-radius: 2px
+            font-size: 90%
         div.details
           padding: 5px
         footer

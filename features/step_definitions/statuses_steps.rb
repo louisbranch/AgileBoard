@@ -1,3 +1,3 @@
-Given /^a status exists$/ do
-  @status = Factory(:status)
+Given /^I have established a status system$/ do
+  Factory(:status)
 end
