@@ -1,7 +1,6 @@
 %h2 Projects
-=link_to 'New Project', new_project_path
 %ul
   - @projects.each do |project|
-    %li= link_to project.name, project_path(project)
-
+    %li.projects= link_to project.name, project_path(project)
+=link_to 'New Project', new_project_path, :class => 'button'
 

@@ -1,5 +1,5 @@
-%li
-  = release_plan.name
+%li.release_plans
+  %h4= link_to release_plan.name, project_release_plan_path(@project, release_plan)
   %div= simple_format(release_plan.description)
   %div
     %strong Starts:
@@ -10,3 +10,4 @@
   %div
     %strong Default Iteration Length:
     = release_plan.length
+  =render @priorities

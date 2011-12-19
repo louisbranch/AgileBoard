@@ -1,12 +1,10 @@
-%h3= @release_plan.name
-%div#backlog
-  %h4 Backlog
-  %ul
+%section#backlog
+  %h3 Release Plan Backlog
+  %ul.drag_user_stories
     = render @user_stories
-%div#iterations
-  %h4 Iterations
-  =link_to 'New Iteration', new_project_release_plan_iteration_path(@project,@release_plan)
+%section#iterations
+  %h3 Iterations
   %ul
     - @iterations.each_with_index do |iteration, i|
-      %li= "#{(i+1).ordinalize} Iteration"
-  
+      %li.iterations= link_to "#{(i+1).ordinalize} Iteration", project_release_plan_iteration_path(@project,@release_plan, iteration)
+  =link_to 'New Iteration', new_project_release_plan_iteration_path(@project,@release_plan), :class => 'button'

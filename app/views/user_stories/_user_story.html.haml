@@ -2,7 +2,7 @@
   %header
     %h4= user_story.name
     %span.story_points= user_story.points
-  %div.details= simple_format(user_story.description)
-  %div.priority= user_story.priority.name unless user_story.priority.nil?
+  %div.details= highlight_user_story(user_story.description)
   %footer
+    %div.priority= user_story.priority.name unless user_story.priority.nil?
     = link_to 'Edit', edit_project_user_story_path(@project, user_story), :remote => true

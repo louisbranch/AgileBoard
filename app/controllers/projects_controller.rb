@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @user_stories = @project.user_stories.project_backlog
     @release_plans = @project.release_plans
+    @priorities = Priority.all
   end
   
   def new

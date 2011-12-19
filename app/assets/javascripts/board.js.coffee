@@ -1,9 +1,9 @@
-$ sortUserStories = ->
-  if $('div#board').length
-    $('div#board section ul').sortable
+$ dragUserStories = ->
+  if $('ul.drag_user_stories').length
+    $('ul.drag_user_stories').sortable
       scroll: false,
-      connectWith: 'div#board section ul',
-      placeholder: 'placeholder',
+      connectWith: 'ul.drag_user_stories',
+      placeholder: 'user_stories placeholder',
       handle: 'header',
       opacity: 0.9,
       over: ->

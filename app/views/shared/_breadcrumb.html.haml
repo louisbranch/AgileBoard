@@ -1,0 +1,9 @@
+%nav#breadcrumb
+  - if @project && !@project.new_record?
+    %h2= link_to_unless_current @project.name, project_path(@project)
+  - if @user_story && !@user_story.new_record?
+    %h2= link_to_unless_current @user_story.name, project_user_story_path(@project, @user_story)
+  - if @release_plan && !@release_plan.new_record?
+    %h2= link_to_unless_current @release_plan.name, project_release_plan_path(@project, @release_plan)
+  - if @iteration && !@iteration.new_record?
+    %h2= link_to_unless_current @iteration.name, project_release_plan_iteration_path(@project, @release_plan, @iteration)

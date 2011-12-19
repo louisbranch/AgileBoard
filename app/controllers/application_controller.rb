@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :create_body_identifiers
   
   def show_errors(target)
     if target.errors.any?
@@ -11,4 +12,10 @@ class ApplicationController < ActionController::Base
       flash[:error] = 'An error has occured!'
     end
   end
+  
+  def create_body_identifiers
+    @body_class = params[:controller]
+    @body_id = params[:action]
+  end
+  
 end
