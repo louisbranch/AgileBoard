@@ -1,6 +1,6 @@
 %section#backlog
   %h3 Project Backlog
-  %ul.drag_user_stories
+  %ul{ 'data-update-url' => update_all_project_user_stories_path(@project), :class => 'drag_user_stories'}
     =render @user_stories
   =link_to 'New User Story', new_project_user_story_path(@project), :remote => true, :id => 'new_user_story', :class => 'button'
 %section#release_plans

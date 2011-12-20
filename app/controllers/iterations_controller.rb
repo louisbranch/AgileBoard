@@ -3,7 +3,8 @@ class IterationsController < ApplicationController
   
   def show
     @iteration = Iteration.find(params[:id])
-    @user_stories = @iteration.user_stories.iteration_backlog
+    @user_stories = @iteration.user_stories
+    @user_stories_backlog = @iteration.user_stories.iteration_backlog
     @statuses = Status.all
   end
   	

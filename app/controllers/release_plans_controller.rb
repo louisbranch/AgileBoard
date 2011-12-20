@@ -4,7 +4,7 @@ class ReleasePlansController < ApplicationController
   def show
     @release_plan = ReleasePlan.find((params[:id]))
     @iterations = @release_plan.iterations
-    @user_stories = @release_plan.user_stories.release_backlog
+    @user_stories_backlog = @release_plan.user_stories.release_backlog
   end  
   
   def new

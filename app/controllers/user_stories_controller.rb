@@ -39,9 +39,33 @@ class UserStoriesController < ApplicationController
     end
   end
   
+  def update_all
+    params[:user_story].each do |id|
+      UserStory.update_all({release_plan_id: nil, priority_id: nil, iteration_id: nil, status_id: nil},{id: id})
+    end
+    render nothing: true
+  end
+  
+  def update_release_plan
+    release_plan = params[:release_plan]
+    priority = params[:priority]
+    params[:user_story].each do |id|
+      UserStory.update_all({release_plan_id: release_plan, priority_id: priority, iteration_id: nil, status_id: nil},{id: id})
+    end
+    render nothing: true
+  end
+  
+  def update_iteration
+    iteration = params[:iteration]
+    params[:user_story].each do |id|
+      UserStory.update_all({iteration_id: iteration, status_id: nil},{id: id})
+    end
+    render nothing: true
+  end
+  
   def update_status
     status = params[:status]
-    params[:user_story].each_with_index do |id|
+    params[:user_story].each do |id|
       UserStory.update_all({status_id: status},{id: id})
     end
     render nothing: true

@@ -10,7 +10,7 @@ $ dragUserStories = ->
         $(this).parent().addClass('active')
       out: ->
         $(this).parent().removeClass('active')
-      update: ->
+      receive: ->
         $.post($(this).data('update-url'), $(this).sortable('serialize'))
 
 $ hideSecundarySections = ->

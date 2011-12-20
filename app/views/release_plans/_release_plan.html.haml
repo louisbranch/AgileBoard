@@ -10,4 +10,8 @@
   %div
     %strong Default Iteration Length:
     = release_plan.length
-  =render @priorities
+  - @priorities.each do |priority|
+    %section
+      %h5= priority.name
+      %ul{ 'data-update-url' => update_release_plan_project_user_stories_path(@project, :release_plan => release_plan.id, :priority => priority.id), :class => 'drag_user_stories'}
+        =render :partial => 'user_stories/user_story', :collection => release_plan.user_stories.by_priority(priority.id)

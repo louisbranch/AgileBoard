@@ -1,0 +1,5 @@
+%li.iterations
+  %h4
+    = link_to iteration.name, project_release_plan_iteration_path(@project,@release_plan, iteration)
+  %ul{ 'data-update-url' => update_iteration_project_user_stories_path(@project, :iteration => iteration.id), :class => 'drag_user_stories'}
+    =render :partial => 'user_stories/user_story', :collection => iteration.user_stories

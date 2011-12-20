@@ -1,4 +1,4 @@
-%li{:id => ['user_story', user_story.id], :class => 'user_stories'}
+%li{:id => ['user_story', user_story.id], :class => user_story.threat_color_class}
   %header
     %h4= user_story.name
     %span.story_points= user_story.points
