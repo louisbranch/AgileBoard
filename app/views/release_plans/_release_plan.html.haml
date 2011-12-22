@@ -2,14 +2,15 @@
   %h4= link_to release_plan.name, project_release_plan_path(@project, release_plan)
   %div= simple_format(release_plan.description)
   %div
-    %strong Starts:
-    = release_plan.starts
-  %div
-    %strong Ends:
-    = release_plan.ends
-  %div
-    %strong Default Iteration Length:
-    = release_plan.length
+    - if release_plan.duration
+      %strong Duration:
+      = release_plan.duration
+    - if release_plan.total_days
+      %strong Total:
+      = release_plan.total_days
+    - if release_plan.days_left
+      %strong Left:
+      = release_plan.days_left
   - @priorities.each do |priority|
     %section
       %h5= priority.name

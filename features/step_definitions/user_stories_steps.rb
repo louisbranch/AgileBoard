@@ -22,6 +22,17 @@ Given /^an user story is assign to an iteration$/ do
   @user_story = Factory(:user_story_with_iteration, :project => @project, :release_plan => @release_plan, :iteration => @iteration)
 end
 
+Given /^many user stories are on a release plan with different priorities$/ do
+  @project = Factory(:project)
+  @release_plan = Factory(:release_plan, :project => @project)
+  @priority_1 = Factory(:priority)
+  @priority_2 = Factory(:priority)
+  @priority_3 = Factory(:priority)
+  @user_story_1 = Factory(:user_story_with_release_plan, :project => @project, :release_plan => @release_plan, :priority => @priority_2)
+  @user_story_2 = Factory(:user_story_with_release_plan, :project => @project, :release_plan => @release_plan, :priority => @priority_3)
+  @user_story_3 = Factory(:user_story_with_release_plan, :project => @project, :release_plan => @release_plan, :priority => @priority_1)
+end
+
 When /^I create a new user story$/ do
   visit projects_path
   click_on @project.name
@@ -110,4 +121,8 @@ Then /^I should see this user story listed on the correct status section$/ do
       page.should have_content UserStory.first.description
     end
   end
+end
+
+Then /^I should see theses user stories ordered by their priorities$/ do
+  UserStory.all.collect{|i| i.id}.should == [3,1,2]
 end

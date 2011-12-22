@@ -5,7 +5,6 @@ class CreateReleasePlans < ActiveRecord::Migration
       t.text :description
       t.date :start_date
       t.date :end_date
-      t.integer :iteration_length
       t.boolean :finished
       t.references :project
       t.timestamps

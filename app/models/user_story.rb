@@ -16,6 +16,8 @@ class UserStory < ActiveRecord::Base
   validates :iteration,    :presence => true, :if => :status
   validates :story_point,  :presence => true, :if => :release_plan
   
+  default_scope :order => 'priority_id ASC'
+  
   scope :project_backlog, where(:status_id => nil, :release_plan_id => nil)
   scope :release_backlog, where(:status_id => nil, :iteration_id => nil)
   scope :iteration_backlog, where(:status_id => nil)

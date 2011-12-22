@@ -9,24 +9,32 @@ class ReleasePlan < ActiveRecord::Base
   def starts
     if start_date
       start_date.strftime("%b %d, %Y")
-    else
-      'not defined'
     end
   end
   
   def ends
     if end_date
       end_date.strftime("%b %d, %Y")
-    else
-      'not defined'
     end
   end
   
-  def length
-    if iteration_length
-      pluralize(iteration_length, 'week')
-    else
-      'not defined'
+  def duration
+    if start_date && end_date
+      "#{starts} to #{ends}"
+    end
+  end
+  
+  def total_days
+    if start_date && end_date
+      date = ((start_date)..(end_date)).select {|d| (1..5).include?(d.wday) }.size
+      "#{date} days"
+    end
+  end
+  
+  def days_left
+    if start_date && (Date.today >= start_date) && end_date && !finished
+      date = ((Date.today)..(end_date)).select {|d| (1..5).include?(d.wday) }.size
+      "#{date} days"
     end
   end
   
